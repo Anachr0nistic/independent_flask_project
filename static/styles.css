@@ -1,0 +1,25 @@
+body {
+    background-color: rgb(92, 79, 74);
+    margin: 0;
+}
+.maincontainer {
+    display: flex;
+    flex-direction: column;
+}
+.topbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    line-height: 10px;
+    background-color: rgb(92, 118, 109);
+    border: 1px; border-color: black;
+}
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    line-height: 10px;
+    background-color: rgb(201, 153, 107);
+    max-width: 200px;
+    min-height:500px;
+    border: 1px; border-color: black; border: solid;
+}
