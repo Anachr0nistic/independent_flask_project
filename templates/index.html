@@ -2,18 +2,35 @@
 <html>
     <head>
         <title>howdydoo</title>
-        <link rel="stylesheet" href="{{ url_for('static',filename='styles.css') }}">
+        <link rel="stylesheet"
+            href="{{ url_for('static',filename='styles.css') }}">
     </head>
     <body>
         <div class="maincontainer">
             <div class="topbar">
-                <p>beans</p>
-                <p>beans</p>
+                <div style="margin-left: 10px; display: flex; flex-direction: row; min-width: 200px; justify-content: space-between;">
+                    <p>Hjem</p>
+                    <p>Konto</p>
+                    <p>Andet</p>
+                </div>
+                <div style="align-content: center;">
+                    <form action="{{ url_for("index")}}" method="post">
+                        <div>
+                            <input
+                                style="border-radius: 5px; text-align: center; max-width: 125px;"
+                                name="place"
+                                placeholder="Søg"
+                                autocomplete="off">
+                            <button type="submit">Søg</button>
+                        </div>
+                    </form>
+                </div>
             </div>
-            <div class ="sidebar">
-                howdy
-            </div>
+            <div style="display: flex; flex-direction: row;">
+                <div class="sidebar"></div>
+                <div class="mainwindow"></div>
 
+            </div>
         </div>
-    </body>
-</html>
+        </body>
+    </html>
