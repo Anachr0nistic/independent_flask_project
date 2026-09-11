@@ -36,3 +36,17 @@ body {
     min-width: 88.2%;
     min-height: 800px;
 }
+.logincontainer {
+    display: flex; 
+    flex-direction: row; 
+    justify-content: center;
+}
+.logincontent {
+    background-color: rgb(92, 118, 109);
+    padding:5px;
+    border-radius:10px;
+}
+.loginitems {
+    color:rgb(237, 233, 230);
+    margin:10px;
+}
