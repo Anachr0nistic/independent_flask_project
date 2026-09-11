@@ -1,5 +1,6 @@
 body {
     background-color: rgb(92, 79, 74);
+    margin: 15px;
 }
 
 .maincontainer {
@@ -12,17 +13,26 @@ body {
     flex-direction: row;
     justify-content: space-between;
     background-color: rgb(92, 118, 109);
-    color: rgb(237, 233, 230);
     min-width: 30px;
+    border-radius: 10px;
 }
 .sidebar {
     display:flex;
     flex-direction: column;
-    margin: 10px;
+    margin-top: 15px;
     background-color: rgb(92, 118, 109);
     color: rgb(237, 233, 230);
-    min-width: 30px;
+    min-width: 175px;
+    height: 300px;
+    text-align: center;
+    border-radius: 10px;
+    min-height: 800px;
 }
 .mainwindow {
     display: flex;
+    margin-left:30px; margin-right: 30px; margin-top: 15px;
+    background-color: rgb(92, 118, 109);
+    border-radius: 10px;
+    min-width: 87%;
+    min-height: 800px;
 }
