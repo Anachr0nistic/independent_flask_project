@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>login page</title>
+        <title>Sign-in page</title>
         <link rel="stylesheet" href="{{ url_for('static',filename='styles.css') }}">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <h1 style="text-align:center; color:rgb(237, 233, 230);font-size: 60px;">Login page</h1>
+        <h1 style="text-align:center; color:rgb(237, 233, 230);font-size: 60px;">Sign-in page</h1>
             <div class="logincontainer">
                 <div class="logincontent">
                     <div class="loginitems">
@@ -20,7 +21,7 @@
                     <button style="font-size: 20px; min-width: 100%; border-radius: 12px;">LOGIN</button>
                 </div>
                 <div class="loginitems">
-                    <a href="/templates/signup.html" style="font-size: 12px; display: flex; justify-content: center;">Don't have an account? Sign up</a>
+                    <a href="/signup" style="font-size: 12px; display: flex; justify-content: center;">Don't have an account? Sign up</a>
 
                 </div>
                 </div>

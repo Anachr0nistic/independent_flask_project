@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sign-up page</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='styles.css') }}">
+</head>
+
+<body>
+    <h1 style="text-align:center; color:rgb(237, 233, 230);font-size: 60px;">Sign-up page</h1>
+    <div class="logincontainer">
+        <div class="logincontent">
+            <div class="loginitems">
+            </div>
+            <form action="{{ url_for("signup")}}">
+                <div class="loginitems">
+                    <input placeholder="Enter username" name="signup_name " required
+                        style="border-radius: 8px; text-align: center;font-size: 20px;""></input>
+                    </div> <br>
+                <div class=" loginitems">
+                    <input placeholder="Enter password" type="password" name="password1"
+                        style="border-radius: 8px; text-align: center;font-size: 20px" required></input>
+                </div>
+                <div class="loginitems">
+                    <input placeholder="Repeat password" name="password2" type="password"
+                        style="border-radius: 8px; text-align: center;font-size: 20px" required></input>
+                </div> <br>
+                <div class="loginitems" style="display: flex; justify-content: center;">
+                    <button type="submit" style="font-size: 20px; min-width: 100%; border-radius: 12px;">SIGN UP</button>
+                </div>
+            </form>
+            <div class="loginitems">
+                <a href="login" style="font-size: 12px; display: flex; justify-content: center;">Already have an
+                    account? Sign in</a>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
