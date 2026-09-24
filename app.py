@@ -18,13 +18,19 @@ def index():
 @app.route("/login")
 def login():
     return render_template("login.html")
-@app.route("/signup")
+@app.route("/signup", methods=["POST"])
 def signup():
     signup_name = request.form.get("signup_name")
     password1 = request.form.get("password1")
     password2 = request.form.get("password2")
+    params = (signup_name, password1)
+    print(params)
     if password1 == password2:
-        c.execute("INSERT INTO USERS (USERNAME, PASSWORD) VALUES (signup_name, password1)")
+        with conn:
+            c.execute("INSERT INTO USERS (ID, USERNAME, PASSWORD) VALUES (NULL, ?, ?)", params)
+    elif password1 != password2:
+        pass #GØR MÅSKE, SÅ EN SIGN-UP FEJL BESKED POPPER OP HVIS JEG HAR TID
+
 
     return render_template("signup.html")
 @app.route("/test")
