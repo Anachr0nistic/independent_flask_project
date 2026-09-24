@@ -15,8 +15,19 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")
 
-@app.route("/login")
+@app.route("/login", methods=["POST", "GET"])
 def login():
+    username = str(request.form.get("username"))
+    password = str(request.form.get("password"))
+    print(username, password)
+    print(c.execute('''SELECT * FROM USERS WHERE USERNAME = (?) ''', (username,)).fetchall())
+    with conn:
+        if username == c.execute('''SELECT * FROM USERS WHERE USERNAME = (?) ''', (username,)).fetchall():
+            print("yippie")
+        else:
+            print("FUCK")
+
+        #c.execute('''SELECT * FROM USERS WHERE PASSWORD = (?) ''', (password)).fetchall()
     return render_template("login.html")
 @app.route("/signup", methods=["POST"])
 def signup():
@@ -24,7 +35,6 @@ def signup():
     password1 = request.form.get("password1")
     password2 = request.form.get("password2")
     params = (signup_name, password1)
-    print(params)
     if password1 == password2:
         with conn:
             c.execute("INSERT INTO USERS (ID, USERNAME, PASSWORD) VALUES (NULL, ?, ?)", params)
@@ -33,8 +43,5 @@ def signup():
 
 
     return render_template("signup.html")
-@app.route("/test")
-def test():
-    return render_template("test.html")
 if __name__ == "__main__":
-    app.run(debug=True, port="8081")
+    app.run(debug=True, port="8082")
