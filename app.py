@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 import sqlite3
 
 conn = sqlite3.connect('db/login.db', check_same_thread=False)
@@ -11,30 +11,24 @@ c.execute('''CREATE TABLE IF NOT EXISTS USERS(
 
 app = Flask(__name__)
 
-@app.route("/")
+@app.route("/", methods=["GET", "POST"])
 def index():
     return render_template("index.html")
 
 @app.route("/login", methods=["POST", "GET"])
 def login():
     if request.method == "POST":
+        logged_in = False
         username = str(request.form.get("username"))
         password = str(request.form.get("password"))
         print(username, password)
+        table = c.execute('''SELECT * FROM USERS''').fetchall()
         #print(c.execute('''SELECT * FROM USERS''').fetchall())
-        table = c.execute('''SELECT * FROM USERS WHERE USERNAME = (?)''', username).fetchall()
-        print(table)
-        if username == table[1]:
-            print("username passed")
-        else:
-            print("spell ur name correctly dumbass")
-        if password == table[2]:
-            print("password passed")
-        else:
-            print("wrong nomber")
-
-
-            #c.execute('''SELECT * FROM USERS WHERE PASSWORD = (?) ''', (password)).fetchall()
+        print(table, len(table))
+        for i in range(len(table)):
+            if table[i][1] == username and table[i][2] == password:
+                print("logged in successfully")
+                return redirect("/")
     return render_template("login.html")
 @app.route("/signup", methods=["POST", "GET"])
 def signup():
@@ -43,11 +37,16 @@ def signup():
         password1 = request.form.get("password1")
         password2 = request.form.get("password2")
         params = (signup_name, password1)
-        if password1 == password2:
-            with conn:
-                c.execute('''INSERT INTO USERS (ID, USERNAME, PASSWORD) VALUES (NULL, ?, ?)''', params)
-        elif password1 != password2:
-            pass #GØR MÅSKE, SÅ EN SIGN-UP FEJL BESKED POPPER OP HVIS JEG HAR TID
+        table = c.execute('''SELECT * FROM USERS''').fetchall()
+        print(len(table))
+        for i in range(len(table)):
+            if table[i][1] == signup_name:
+                break
+            else:
+                if password1 == password2:
+                    with conn:
+                        c.execute('''INSERT INTO USERS (ID, USERNAME, PASSWORD) VALUES (NULL, ?, ?)''', params)
+                        break
     return render_template("signup.html")
 if __name__ == "__main__":
-    app.run(debug=True, port="8082")
+    app.run(debug=True, port="8081")
