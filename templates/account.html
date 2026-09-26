@@ -10,11 +10,10 @@
 <body>
     <div class="maincontainer">
         <div class="topbar">
-            <div
-                style="margin-left: 20px; display: flex; flex-direction: row; min-width: 200px; justify-content: space-between; color: rgb(237, 233, 230);">
-                <p>Hjem</p>
-                <p>Konto</p>
-                <p>Andet</p>
+            <div style="margin-left: 20px; display: flex; flex-direction: row; min-width: 200px; justify-content: space-between; color: rgb(237, 233, 230); font-size: 20px;">
+                <p><a href="/" class="hover">Hjem</a></p>
+                <p class="selected">Konto</p>
+                <p><a href="/misc" class="hover">Andet</a></p>
             </div>
             <div style="align-content: center; margin-right: 10px;">
                 <form action="{{ url_for('index')}}" method="post">

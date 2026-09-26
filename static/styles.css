@@ -80,3 +80,14 @@ body {
     color: rgb(237, 233, 230);
     margin: 10px;
 }
+.hover:hover {
+    color: rgb(32, 39, 37);
+}
+.selected {
+    text-decoration: underline;
+}
+
+a {
+    color: rgb(237, 233, 230);
+    text-decoration: none;
+}
