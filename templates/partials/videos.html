@@ -1,0 +1,10 @@
+<h2>Dine Videoer</h2>
+<div class="video-grid">
+    {% for video in videos %}
+        <div style="padding: 10px; border: 1px solid #ccc; margin-bottom: 5px;">
+            🎬 {{ video }}
+        </div>
+    {% else %}
+        <p>Ingen videoer fundet.</p>
+    {% endfor %}
+</div>

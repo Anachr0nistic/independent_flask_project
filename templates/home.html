@@ -4,7 +4,10 @@
 <head>
     <title>howdydoo</title>
     <link rel="stylesheet" href="{{ url_for('static',filename='styles.css') }}">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="{{ url_for('static', filename='htmx.min.js') }}"></script>
+
+    <meta content="width=device-width, initial-scale=1.0">
+    
 </head>
 
 <body>
@@ -27,10 +30,10 @@
         </div>
         <div class="content">
                 <div class="sidebar">
-                    <p>a</p>
-                 <p>b</p>
+                    <p><a>Upload video</p></a>
+                 <p>Se videoer</p>
                 </div>
-                <div class="mainwindow" style="margin-left: 15px;">
+                <div id="main-container" class="mainwindow" style="margin-left: 15px;">
                     <p>placeholder</p> 
             </div>
         </div>

@@ -1,9 +1,8 @@
 from flask import Flask, render_template, request, redirect, make_response
 import sqlite3
 
-conn = sqlite3.connect('db/login.db', check_same_thread=False)
-c = conn.cursor() # cursor
-
+c = sqlite3.connect('db/login.db', check_same_thread=False).cursor() # cursor
+cc = sqlite3.connect('db/video.db', check_same_thread=False).cursor()
 
 c.execute('''CREATE TABLE IF NOT EXISTS USERS(
                 ID INTEGER PRIMARY KEY NOT NULL,
@@ -16,6 +15,15 @@ app = Flask(__name__)
 @app.route("/", methods=["GET", "POST"])
 def index():
     return render_template("home.html")
+
+@app.route("/videos")
+def video():
+    return render_template("partials/videos.html")
+
+@app.route("/upload")
+def upload():
+    return render_template("/partials/upload.html")
+
 
 @app.route("/account")
 def account():
@@ -38,8 +46,16 @@ def login():
             if table[i][1] == username and table[i][2] == password:
                 print("logged in successfully")
 
+                user_id = str(table[i][0])
+
                 resp = make_response(redirect("/"))
-                resp.set_cookie(username, str(table[i][0]))
+                resp.set_cookie(username, user_id)
+
+                table_name = f"user_videos_{user_id}"
+        
+                cc.execute(f'''CREATE TABLE IF NOT EXISTS {table_name} (
+                    VIDEO_ID INTEGER PRIMARY KEY AUTOINCREMENT,
+                    VIDEO TEXT NOT NULL)''')
 
                 return resp
             
@@ -63,7 +79,7 @@ def signup():
                 break
         else:
             if password1 == password2:
-                 with conn:
+                 with sqlite3.connect('db/login.db', check_same_thread=False):
                     c.execute('''INSERT INTO USERS (ID, USERNAME, PASSWORD) VALUES (NULL, ?, ?)''', params)
                     return redirect("/login")
     return render_template("signup.html")
