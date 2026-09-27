@@ -37,11 +37,20 @@
             <div class="content">
                 <div class="sidebar">
                     <a href="/videos" class="hover">Se Videoer</a>
-                    <a href="/upload" class="hover">Upload Video</a>
+                    <a href="/upload" class="selected">Upload Video</a>
                 </div>
                 <div id="main-container" class="mainwindow"
-                    style="margin-left: 15px;">
-                    <p>placeholder</p>
+                    style="margin-left: 15px; color: rgb(237, 233, 230);">
+                    <div class="sub">
+                    <h2>Upload Ny Video</h2>
+                    <form action="/upload" method="POST"
+                        enctype="multipart/form-data">
+                        <input type="file" name="video_file"
+                            accept="video/*"><br><br>
+                        <button type="submit">Upload video</button>
+                    </form>
+                    </div>
+
                 </div>
             </div>
         </div>

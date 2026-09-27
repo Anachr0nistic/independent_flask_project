@@ -56,12 +56,19 @@ body {
 
 .mainwindow {
     display: flex;
+    flex-direction: row;
     flex: 1;
     min-width: 0;
     min-height: 0;
-    margin-top: 15px;
+    margin: 15px;
     background-color: rgb(92, 118, 109);
     border-radius: 10px;
+    .sub {
+        display: flex;
+        flex-direction: column;
+        margin:15px
+
+    }
 }
 
 .logincontainer {
@@ -90,4 +97,11 @@ body {
 a {
     color: rgb(237, 233, 230);
     text-decoration: none;
+    margin-top: 10px;
+}
+.video-grid {
+    margin-left:15px;margin-right:15px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }

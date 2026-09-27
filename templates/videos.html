@@ -36,12 +36,31 @@
             </div>
             <div class="content">
                 <div class="sidebar">
-                    <a href="/videos" class="hover">Se Videoer</a>
+                    <a href="/videos" class="selected">Se Videoer</a>
                     <a href="/upload" class="hover">Upload Video</a>
                 </div>
                 <div id="main-container" class="mainwindow"
-                    style="margin-left: 15px;">
-                    <p>placeholder</p>
+                    style="margin-left: 15px; color: rgb(237, 233, 230);">
+                    <div class="sub">
+                        <h2>Dine Videoer</h2>
+                        <div class="video-grid">
+                            {% for video in videos %}
+                            <div
+                                style="padding: 5px; border: 1px solid black; border-radius: 8px; background: rgb(92, 79, 74);">
+                                <video width="313px" controls>
+                                    <source
+                                        src="{{ url_for('static', filename='uploads/' + video) }}"
+                                        type="video/mp4">
+                                </video>
+                                <p style="margin-top: 8px; font-size: 14px; color: rgb(237, 233, 230);;">{{video }}</p>
+                            </div>
+                            {% else %}
+                            <p>Ingen videoer fundet.</p>
+                            {% endfor %}
+                        </div>
+
+                    </div>
+
                 </div>
             </div>
         </div>
